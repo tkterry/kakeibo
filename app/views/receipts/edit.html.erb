@@ -1,0 +1,20 @@
+<h2>Add New Receipt</h2>
+
+<%= form_for @receipt,url:receipt_path(@receipt.id) do |f|%>
+    <p>
+        <%=f.number_field :payment,placeholder:'enter payment'%>
+    </p>
+    <p>
+        <%=f.text_field :p_date,class:'form-control date-picker',placeholder:'enter paid_at'%>
+    </p>
+    <p>
+        <%=f.text_area :memo,placeholder:'enter memo'%>
+    </p>
+    <p>
+    <%=f.number_field :type_id,placeholder:'enter type'%>
+    </p>
+    <p>
+        <%=f.submit%>
+    </p>
+    
+    <% end %>

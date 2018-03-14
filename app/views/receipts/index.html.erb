@@ -1,0 +1,14 @@
+<h2>Receipts</h2>
+<ul>
+<% @receipts.each do |receipt| %>
+<li>
+<%= "日付：#{receipt.p_date}　　支払：#{receipt.payment}　　#{receipt.type.title} "%>
+<%= link_to '-Edit-',edit_receipt_path(receipt),class:'command' %>    
+<%= link_to '[×]',
+            receipt_path(receipt),
+            method: :delete,
+            class:'command',
+            data:{confirm:'Sure?'} %>    
+</li>
+<% end %>
+</ul>
