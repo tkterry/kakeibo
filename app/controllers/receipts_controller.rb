@@ -13,17 +13,20 @@ class ReceiptsController < ApplicationController
     def create
         @receipt=Receipt.new(receipt_params)
         @receipt.save
-        redirect_to receipts_path
+        redirect_to new_receipt_path
     end
     
     def edit
+        require 'date'
         @receipt=Receipt.find(params[:id])
+        @types=Type.all
+        @amounts=Receipt.includes(:type).where('p_date>?',Date.today-30)
     end
 
     def update
         @receipt=Receipt.find(params[:id])
         if @receipt.update(receipt_params)
-            redirect_to receipts_path
+            redirect_to new_receipt_path
         else
             render 'edit'
         end
@@ -32,7 +35,7 @@ class ReceiptsController < ApplicationController
     def destroy
         @receipt=Receipt.find(params[:id])
         @receipt.destroy
-        redirect_to receipts_path
+        redirect_to new_receipt_path
     end
     
     

@@ -9,12 +9,11 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
 //= require rails-ujs
+//= require jquery
+//= require jquery-ui/widgets/datepicker
+//= require jquery-ui/i18n/datepicker-ja
+//= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-document.addEventListener('turbolinks:load', function(){ 
-    $('.flatpickr').flatpickr();
-});
-
