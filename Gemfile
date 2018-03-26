@@ -54,3 +54,15 @@ gem 'coffee-script-source','1.8.0'
 gem "jquery-rails"
 
 gem 'jquery-ui-rails'
+
+group :test do
+  gem 'rails-controller-testing','1.0.2'
+  gem 'minitest-reporters','1.1.14'
+  gem 'guard','2.13.0'
+  gem 'guard-minitest','2.4.4'
+
+end
+
+gem 'bootstrap-sass'
+gem 'bcrypt','3.1.11'
+gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'

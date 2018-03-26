@@ -9,7 +9,7 @@
 </p>
 
 <p>
-    <%=f.text_area :memo,placeholder:'enter memo'%>
+    <%=f.text_field :memo,placeholder:'enter memo'%>
 </p>
 <p>
     <% @types.each do |r|%>
@@ -25,5 +25,5 @@
 </p>
 
 <% end %>
-
+<% provide(:title,"new")%>
 <%= render 'index' %>
