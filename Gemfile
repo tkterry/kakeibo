@@ -66,3 +66,7 @@ end
 gem 'bootstrap-sass'
 gem 'bcrypt','3.1.11'
 gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
+
+gem 'faker','1.7.3'
+gem 'will_paginate','3.1.6'
+gem 'bootstrap-will_paginate','1.0.0'

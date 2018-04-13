@@ -37,4 +37,15 @@
 # Receipt.create(payment:960,p_date:"2018-03-03",type_id:1,user_id:2)
 # Receipt.create(payment:2000,p_date:"2018-03-03",type_id:2,user_id:2)
 
+User.create!(name:"Example User",
+             email:"example@rails.org",
+             password:"foobar",
+             password_confirmation:"foobar",
+             admin:true)
 
+99.times do |n|
+    name=Faker::Name.name
+    email="Example-#{n}@sample.com"
+    password="password"
+    User.create!(name:name,email:email,password:password,password_confirmation:password)
+end
