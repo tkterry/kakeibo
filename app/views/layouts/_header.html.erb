@@ -1,6 +1,6 @@
 <header class="navber navbar-fixed-top navbar-inverse">
 <div class="container">
- <%=link_to "Kakeibo",root_path,id:"logo" %>
+ <%=link_to "#{current_user.name + '\'s' if logged_in?} Kakeibo",root_path,id:"logo" %>
  <nav>
   <ul class="nav navbar-nav navbar-right">
     <li><%= link_to "HOME",root_path %></li>             

@@ -1,3 +1,4 @@
 class Type < ApplicationRecord
-    has_one :receipt
+    has_many :receipts
+    validates :title,presence:true,length:{maximum:20},uniqueness:{case_sensitive:false}
 end
