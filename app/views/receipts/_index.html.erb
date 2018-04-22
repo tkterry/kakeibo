@@ -2,7 +2,7 @@
 <ul>
 <% @receipts.each do |receipt| %>
 <li>
-<%= "日付：#{receipt.p_date}　　支払：#{receipt.payment}　#{receipt.type.title} "%>
+<%= "日付：#{receipt.p_date}　　支払：#{receipt.payment}　 "%>
 <%= link_to '-Edit-',edit_receipt_path(receipt),class:'command' %>    
 <%= link_to '[×]',
             receipt_path(receipt),

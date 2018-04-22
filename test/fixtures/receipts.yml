@@ -3,13 +3,13 @@
 one:
   payment: 300
   p_date: 2018-03-10
-  type_id: 1
+  type: one
   user: michael
   memo: MyText1
 
 two:
   payment: 500
   p_date: 2018-03-10
-  type_id: 1
+  type: two
   user: michael
   memo: MyText2

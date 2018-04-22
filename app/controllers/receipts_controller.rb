@@ -11,11 +11,16 @@ class ReceiptsController < ApplicationController
     @receipts=current_user.receipt.includes(:type).all.order(created_at: :desc).limit(5)
     @types=Type.all
     @amounts=current_user.receipt.includes(:type).where('p_date>?',Date.today-30)
+    @prevamount=current_user.receipt.includes(:type).where(p_date:Date.today.prev_month.beginning_of_month..Date.today.prev_month.end_of_month)
  end
     
  def create
     @receipt=current_user.receipt.new(receipt_params)
-    @receipt.save
+    if @receipt.save
+      flash[:success] ="入力しました"
+    else
+      flash[:danger] ="未入力項目があります"      
+    end
     redirect_to new_receipt_path
  end
     
@@ -30,6 +35,7 @@ class ReceiptsController < ApplicationController
     @receipt=Receipt.find(params[:id])
     if @receipt.update(receipt_params)
       redirect_to new_receipt_path
+      flash[:success]="Receipt update"
     else
       render 'edit'
     end
@@ -38,6 +44,7 @@ class ReceiptsController < ApplicationController
  def destroy
     @receipt=Receipt.find(params[:id])
     @receipt.destroy
+    flash[:success]="Receipt deteted"
     redirect_to new_receipt_path
  end
     

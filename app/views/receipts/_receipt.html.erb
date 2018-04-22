@@ -1,9 +1,14 @@
-<li>
-<%= "日付：#{receipt.p_date}　　支払：#{receipt.payment}　　#{receipt.type.title} "%>
-<%= link_to '編集',edit_receipt_path(receipt),class:'command' %>    
-<%= link_to '削除',
+<tr>
+<td><%= "#{receipt.p_date} "%></td>
+<td><%= "#{receipt.payment} "%></td>
+<td><%= "#{receipt.type.title} "%></td>
+<td><%= "#{receipt.memo} "%></td>
+<td>
+<%= link_to 'edit',edit_receipt_path(receipt),class:'command' %>    
+<%= link_to 'delete',
             receipt_path(receipt),
             method: :delete,
             class:'command',
             data:{confirm:'Sure?'} %>    
-</li>
+</td>
+</tr>

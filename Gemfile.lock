@@ -137,6 +137,8 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    pg (0.20.0)
+    pg (0.20.0-x64-mingw32)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -251,6 +253,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   minitest-reporters (= 1.1.14)
+  pg (= 0.20.0)
   puma (~> 3.7)
   rails (~> 5.1.5)
   rails-controller-testing (= 1.0.2)

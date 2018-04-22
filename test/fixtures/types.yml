@@ -2,10 +2,10 @@
 
 one:
   title: MyString1
-  note: MyText
-  budget: 1
+  note: MyText1
+  budget: 1500
 
 two:
   title: MyString2
-  note: MyText
-  budget: 1
+  note: MyText2
+  budget: 2000
