@@ -12,7 +12,8 @@ class ReceiptsController < ApplicationController
     @types=Type.all
     @amounts=current_user.receipt.includes(:type).where('p_date>?',Date.today-30)
     @prevamount=current_user.receipt.includes(:type).where(p_date:Date.today.prev_month.beginning_of_month..Date.today.prev_month.end_of_month)
- end
+    @today=Date.today
+  end
     
  def create
     @receipt=current_user.receipt.new(receipt_params)

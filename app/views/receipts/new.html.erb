@@ -1,37 +1,41 @@
 <h2>Add New Receipt</h2>
+<div class="container">
 <%= form_for :receipt,url:receipts_path do |f|%>
- <div class="receipt-form">
+  <div class="row">
+   <div class="col-md-12">
     <%=f.number_field :payment,placeholder:'enter payment'%>
-
-    <%=f.text_field :p_date,class:'date-picker',placeholder:'enter paid_at'%>
-
+    <%=f.text_field :p_date, value:@today, class:'date-picker', placeholder:'enter paid_at'%>
     <%=f.text_field :memo,placeholder:'enter memo'%>
-    <div class="row" style="margin-bottom:10px;">
-     <% @types.each do |r|%>
-        <div class="col-xs-6 col-md-4">
-         <%= f.radio_button :type_id,r.id ,{id:r.id} %>
-         <label for=<%= "#{r.id}" %> class="btn btn-success" style="width:100%;margin-bottom:5px;">
-            <div style="font-size:20px;"><%="#{r.title}" %></div>
-            <div>
-               <%="今月：#{@amounts.where(type_id:r.id).sum(:payment)}" %>
-               <%="先月：#{@prevamount.where(type_id:r.id).sum(:payment)}" %>
-            </div>
-         </label>
-        </div>
-     <% end %>
-    </div>
-    <%=f.submit "入力",class:"btn btn-success btn-lg btn-block",style:"font-size:4vw;width:100%;margin-bottom:10px"%>
- </div>
+   </div>
+   <% @types.each do |r|%>
+   <div class="col-xs-7 col-md-3">
+    <%= f.radio_button :type_id,r.id ,{id:r.id} %>
+          <label for=<%= "#{r.id}" %> class="btn btn-block btn-default" style="height:3em;padding-top:0.7em;">
+           <small><%="#{r.title}" %></small>
+          </label>
+   </div>
+   <div class="col-xs-5 col-md-3"  style="height:3em;">
+      <small>
+        <%="今月：#{@amounts.where(type_id:r.id).sum(:payment)}" %><br>
+        <%="先月：#{@prevamount.where(type_id:r.id).sum(:payment)}" %>
+      </small>
+   </div>
+   <% end %>
+  </div>
+  <%=f.submit "入力",class:"btn btn-default btn-lg btn-block"%>
 <% end %>
 
 <% provide(:title,"new")%>
-<table class="table">
+<table class="table table-hover table-responsive">
  <thead>
   <th scope="col">日付</th>
   <th scope="col">金額</th>
   <th scope="col">明細</th>
-  <th scope="col">メモ</th>
-  <th scope="col">編集</th>
+  <th scope="col">memo</th>
+  <th scope="col"></th>
  </thead>
+ <tbody>
   <%= render @receipts %>
+ </tbody>
 </table>
+</div>

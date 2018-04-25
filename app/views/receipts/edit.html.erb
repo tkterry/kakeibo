@@ -1,27 +1,21 @@
-<h2>Add New Receipt</h2>
-
+<h2>Edit Receipt</h2>
+<div class="container">
 <%= form_for @receipt,url:receipt_path(@receipt.id) do |f|%>
-    <p>
+ <div class="row">
+  <div class="col-md-12">
     <%=f.number_field :payment,placeholder:'enter payment'%>
-</p>
-<p>
     <%=f.text_field :p_date,class:'date-picker',placeholder:'enter paid_at'%>
-</p>
-
-<p>
     <%=f.text_field :memo,placeholder:'enter memo'%>
-</p>
-<p>
-    <% @types.each do |r|%>
-        <label><%= f.radio_button :type_id,r.id %><%="#{r.title} #{@amounts.where(type_id:r.id).sum(:payment)} #{@types.find(r.id).budget}"%></label>
-    <% end %>
-
-    <%#=f.collection_radio_buttons(:type_id,Type.all,:id,:title) do |b|%>
-    <%#= b.label {b.radio_button+"#{b.text}  #{@amounts.where(type_id:b.value).sum(:payment)} #{@types.find(b.value).budget}"} %><%#うまい手はないか%><br>
-    <%# end %>
-</p>
-<p>
-    <%=f.submit%>
-</p>
-    
+  </div>
+  <% @types.each do |r|%>
+    <div class="col-xs-12 col-md-6">
+    <%= f.radio_button :type_id,r.id ,{id:r.id} %>
+          <label for=<%= "#{r.id}" %> class="btn btn-block btn-default" style="height:3em;padding-top:0.7em;">
+           <small><%="#{r.title}" %></small>
+          </label>
+   </div>
+  <% end %>
+ </div>
+    <%= f.submit "入力",class:"btn btn-default btn-lg btn-block" %>
 <% end %>
+</div>

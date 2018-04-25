@@ -28,14 +28,12 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 h1{
-    // font-size: 15vw;
     font-size: 3em;
     letter-spacing: -2px;
     text-align: center;
 }
 
 h2{
-    // font-size: 10vw;
     font-size: 1.2em;
     letter-spacing: -1px;
     text-align: center;
@@ -43,12 +41,6 @@ h2{
     color:#777;
 }
 
-p{
-    // font-size:9vw;
-    font-size:1.1em;
-    line-height: 15vw;
-    // line-height: 1.7em;
-}
 
 /* header */
 #logo{
@@ -131,10 +123,6 @@ input,textarea,select,.uneditable-input {
     @include box_sizing;
 }
 
-.receipt-form {
-    font-size:4vw;
-}
-
 input {
     height: auto !important;
 }
@@ -205,3 +193,7 @@ input[type="radio"]:checked+label {
         border-bottom: 1px solid $gray-lighter
     }
 }
+
+.table {
+    border:none;
+  }
