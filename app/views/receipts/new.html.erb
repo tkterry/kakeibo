@@ -22,17 +22,19 @@
    </div>
    <% end %>
   </div>
-  <%=f.submit "入力",class:"btn btn-default btn-lg btn-block"%>
+  <div style="margin:15px 0px;">
+   <%=f.submit "入力",class:"btn btn-default btn-lg btn-block"%>
+  </div>
 <% end %>
 
 <% provide(:title,"new")%>
 <table class="table table-hover table-responsive">
  <thead>
-  <th scope="col">日付</th>
-  <th scope="col">金額</th>
-  <th scope="col">明細</th>
-  <th scope="col">memo</th>
-  <th scope="col"></th>
+  <th class="small" scope="col">日付</th>
+  <th class="small" scope="col">金額</th>
+  <th class="small" scope="col">明細</th>
+  <th class="small" scope="col">memo</th>
+  <th class="small" scope="col"></th>
  </thead>
  <tbody>
   <%= render @receipts %>
