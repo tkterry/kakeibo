@@ -15,9 +15,8 @@
           </label>
    </div>
    <div class="col-xs-5 col-md-3"  style="height:3em;">
-      <small>
-        <%="今月：#{@amounts.where(type_id:r.id).sum(:payment)}" %><br>
-        <%="先月：#{@prevamount.where(type_id:r.id).sum(:payment)}" %>
+        <div><%="¥ #{@amounts.where(type_id:r.id).sum(:payment).to_s(:delimited)}" %></div>
+        <div class="small text-muted"><%="¥ #{@prevamount.where(type_id:r.id).sum(:payment).to_s(:delimited)}" %></div>
       </small>
    </div>
    <% end %>
@@ -26,8 +25,12 @@
    <%=f.submit "入力",class:"btn btn-default btn-lg btn-block"%>
   </div>
 <% end %>
-
-<% provide(:title,"new")%>
+<div class="row text-center h2">
+  <%= "￥ #{@amounts.sum(:payment).to_s(:delimited)}"%>
+</div>
+<div class="row text-center text-muted h5">
+  <%= "先月　　￥ #{@prevamount.sum(:payment).to_s(:delimited)}"%>
+</div>
 <table class="table table-hover table-responsive">
  <thead>
   <th class="small" scope="col">日付</th>
@@ -41,3 +44,5 @@
  </tbody>
 </table>
 </div>
+
+<% provide(:title,"new")%>
