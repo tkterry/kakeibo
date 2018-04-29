@@ -10,7 +10,7 @@
    <% @types.each do |r|%>
    <div class="col-xs-7 col-md-3">
     <%= f.radio_button :type_id,r.id ,{id:r.id} %>
-          <label for=<%= "#{r.id}" %> class="btn btn-block btn-default" style="height:3em;padding-top:0.7em;">
+          <label for=<%= "#{r.id}" %> class="btn btn-block btn-success" style="height:3em;padding-top:0.7em;">
            <small><%="#{r.title}" %></small>
           </label>
    </div>
@@ -21,17 +21,7 @@
    </div>
    <% end %>
   </div>
-  <div style="margin:15px 0px;">
-   <%=f.submit "入力",class:"btn btn-default btn-lg btn-block"%>
-  </div>
-<% end %>
-<div class="row text-center h2">
-  <%= "￥ #{@amounts.sum(:payment).to_s(:delimited)}"%>
-</div>
-<div class="row text-center text-muted h5">
-  <%= "先月　　￥ #{@prevamount.sum(:payment).to_s(:delimited)}"%>
-</div>
-<table class="table table-hover table-responsive">
+  <table class="table table-hover table-responsive">
  <thead>
   <th class="small" scope="col">日付</th>
   <th class="small" scope="col">金額</th>
@@ -43,6 +33,19 @@
   <%= render @receipts %>
  </tbody>
 </table>
+
+<footer class="navber navbar-fixed-bottom" style="background-color:white;">
+ <div style="margin:15px 0px;">
+  <%=f.submit "入力",class:"btn btn-success btn-lg btn-block"%>
+ </div>
+ <div class="row text-center h2">
+  <%= "￥ #{@amounts.sum(:payment).to_s(:delimited)}"%>
+ </div>
+ <div class="row text-center text-muted h5">
+  <%= "先月　　￥ #{@prevamount.sum(:payment).to_s(:delimited)}"%>
+ </div>
+</footer>
+<% end %>
 </div>
 
 <% provide(:title,"new")%>

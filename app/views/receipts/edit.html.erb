@@ -10,14 +10,14 @@
   <% @types.each do |r|%>
     <div class="col-xs-12 col-md-6">
     <%= f.radio_button :type_id,r.id ,{id:r.id} %>
-          <label for=<%= "#{r.id}" %> class="btn btn-block btn-default" style="height:3em;padding-top:0.7em;">
+          <label for=<%= "#{r.id}" %> class="btn btn-block btn-success" style="height:3em;padding-top:0.7em;">
            <small><%="#{r.title}" %></small>
           </label>
    </div>
   <% end %>
  </div>
  <div style="margin:15px 0px;">
-    <%= f.submit "入力",class:"btn btn-default btn-lg btn-block" %>
+    <%= f.submit "入力",class:"btn btn-success btn-lg btn-block" %>
  </div>
 <% end %>
 </div>
