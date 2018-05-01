@@ -6,13 +6,32 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Type.create(title:"食料品")
-Type.create(title:"外食")
-Type.create(title:"生活消耗品")
-Type.create(title:"電気代")
-Type.create(title:"ガス代")
-Type.create(title:"水道代")
-Type.create(title:"服・靴")
+
+# Receipt.create(payment:520,p_date:"2018-03-04",type_id:1,user_id:2)
+# Receipt.create(payment:1500,p_date:"2018-03-02",type_id:2,user_id:2)
+# Receipt.create(payment:2800,p_date:"2018-03-04",type_id:1,user_id:2)
+# Receipt.create(payment:3200,p_date:"2018-03-02",type_id:2,user_id:1)
+# Receipt.create(payment:340,p_date:"2018-03-03",type_id:3,user_id:1)
+# Receipt.create(payment:420,p_date:"2018-03-03",type_id:3,user_id:2)
+# Receipt.create(payment:960,p_date:"2018-03-03",type_id:1,user_id:2)
+# Receipt.create(payment:2000,p_date:"2018-03-03",type_id:2,user_id:2)
+
+@user=User.new(name:"testtaitai",
+email:"testmail@testmail.com",
+password:"testtaitai",
+password_confirmation:"testtaitai",
+admin:true)
+
+@user.create!
+
+              
+Type.create(title:"食料品",user_id:@user)
+Type.create(title:"外食",user_id:@user)
+Type.create(title:"生活消耗品",user_id:@user)
+Type.create(title:"電気代",user_id:@user)
+Type.create(title:"ガス代",user_id:@user)
+Type.create(title:"水道代",user_id:@user)
+Type.create(title:"服・靴",user_id:@user)
 Type.create(title:"美容")
 Type.create(title:"家具・収納・家電")
 Type.create(title:"車関連")
@@ -27,21 +46,6 @@ Type.create(title:"医療費")
 Type.create(title:"携帯・ネット")
 Type.create(title:"役所・税金・奨学金")
 Type.create(title:"その他")
-
-# Receipt.create(payment:520,p_date:"2018-03-04",type_id:1,user_id:2)
-# Receipt.create(payment:1500,p_date:"2018-03-02",type_id:2,user_id:2)
-# Receipt.create(payment:2800,p_date:"2018-03-04",type_id:1,user_id:2)
-# Receipt.create(payment:3200,p_date:"2018-03-02",type_id:2,user_id:1)
-# Receipt.create(payment:340,p_date:"2018-03-03",type_id:3,user_id:1)
-# Receipt.create(payment:420,p_date:"2018-03-03",type_id:3,user_id:2)
-# Receipt.create(payment:960,p_date:"2018-03-03",type_id:1,user_id:2)
-# Receipt.create(payment:2000,p_date:"2018-03-03",type_id:2,user_id:2)
-
-# User.create!(name:"Example User",
-#              email:"example@rails.org",
-#              password:"foobar",
-#              password_confirmation:"foobar",
-#              admin:true)
 
 # 99.times do |n|
 #     name=Faker::Name.name

@@ -1,11 +1,31 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+zero:
+  title: 未分類
+  note: MyText0
+  budget: 1000
+  user: michael
+
 one:
   title: MyString1
   note: MyText1
-  budget: 1500
+  budget: 1000
+  user: michael
 
 two:
   title: MyString2
   note: MyText2
   budget: 2000
+  user: michael
+
+three:
+  title: MyString3
+  note: MyText3
+  budget: 3000
+  user: michael
+
+other:
+  title: MyString2
+  note: MyText2
+  budget: 2000
+  user: archer

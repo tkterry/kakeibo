@@ -1,13 +1,15 @@
 class User < ApplicationRecord
     attr_accessor :remember_token
     has_many :receipt, dependent: :destroy
-    before_save{self.email=email.downcase}
-    validates :name,presence:true,length:{maximum:50}
+    has_many :type, dependent: :destroy
+    before_save{self.email = email.downcase}
+    after_create :ini_type_create
+    validates :name, presence:true, length:{maximum:50}
     # VALID_EMAIL_REGEX=/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     VALID_EMAIL_REGEX=/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-    validates :email,presence:true,length:{maximum:255},format:{with:VALID_EMAIL_REGEX},uniqueness:{case_sensitive:false}
+    validates :email, presence:true, length:{maximum:255}, format:{with:VALID_EMAIL_REGEX}, uniqueness:{case_sensitive:false}
     has_secure_password
-    validates :password,presence:true,length:{minimum:6},allow_nil:true
+    validates :password, presence:true, length:{minimum:6}, allow_nil:true
 
     def User.digest(string)
         cost=ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -28,7 +30,15 @@ class User < ApplicationRecord
         return false if remember_digest.nil?
         BCrypt::Password.new(remember_digest).is_password?(remember_token)
     end
+
     def forget
         update_attribute(:remember_digest,nil)
+    end
+
+    def ini_type_create
+        unless self.type.find_by(title:'未分類')
+         @type=Type.new(title:'未分類',user:self)
+         @type.save
+        end
     end
 end

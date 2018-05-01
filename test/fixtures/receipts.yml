@@ -10,6 +10,27 @@ one:
 two:
   payment: 500
   p_date: 2018-03-10
+  type: one
+  user: michael
+  memo: MyText2
+
+three:
+  payment: 500
+  p_date: 2018-03-10
+  type: one
+  user: michael
+  memo: MyText2
+
+four:
+  payment: 500
+  p_date: 2018-03-10
+  type: two
+  user: michael
+  memo: MyText2
+
+five:
+  payment: 500
+  p_date: 2018-03-10
   type: two
   user: michael
   memo: MyText2

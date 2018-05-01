@@ -5,4 +5,5 @@ class Receipt < ApplicationRecord
     validates :p_date,presence:true
     validates :type_id,presence:true
     validates :memo,length:{maximum:30}
+
 end
