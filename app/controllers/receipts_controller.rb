@@ -10,7 +10,7 @@ class ReceiptsController < ApplicationController
     require 'date'
     @receipts=current_user.receipt.includes(:type).all.order(created_at: :desc).limit(5)
     @types=Type.all
-    @amounts=current_user.receipt.includes(:type).where('p_date>?',Date.today-30)
+    @amounts=current_user.receipt.includes(:type).where(p_date:Date.today.beginning_of_month..Date.today.end_of_month)
     @prevamount=current_user.receipt.includes(:type).where(p_date:Date.today.prev_month.beginning_of_month..Date.today.prev_month.end_of_month)
     @today=Date.today
   end
