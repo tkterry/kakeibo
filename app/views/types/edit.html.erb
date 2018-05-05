@@ -1,0 +1,7 @@
+<h2>Edit Types</h2>
+<div class="container">
+<%= form_for @type,url:type_path(@type.id) do |f|%>
+       <%=f.text_field :title,placeholder:'enter title'%>
+       <%=f.submit "Update",class:"btn btn-sm btn-success btn-lg btn-block"%>
+<% end %>
+</div>

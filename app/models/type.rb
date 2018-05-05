@@ -1,15 +1,17 @@
 class Type < ApplicationRecord
     has_many :receipts
     belongs_to :user
-    validates :title,presence:true,length:{maximum:20},uniqueness:{case_sensitive:false}
+    validates :title,presence:true,length:{maximum:20}
     validates :note,length:{maximum:30}
     validates :user,presence:true
-    before_destroy :move_type
+    after_destroy :move_type
 
     def move_type
-        else_type_create
-        @elsetype=Type.where(user_id:self.user_id).find_by(title:'未分類')
-        Receipt.where(type:self).update(type:@elsetype)
+        if User.find(self.user_id)
+         else_type_create
+         @elsetype=Type.where(user_id:self.user_id).find_by(title:'未分類')
+         Receipt.where(type:self).update(type:@elsetype)
+        end
     end
 
     def else_type_create

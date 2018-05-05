@@ -1,0 +1,7 @@
+<h2>Make Types</h2>
+<div class="container">
+    <%= form_for :type,url:types_path do |f| %>
+       <%=f.text_field :title,placeholder:'enter title'%>
+       <%=f.submit "Add",class:"btn btn-sm btn-success btn-lg btn-block"%>
+<% end %>
+</div>

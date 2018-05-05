@@ -75,6 +75,6 @@ class UserTest < ActiveSupport::TestCase
 
   test "should create initial type" do
     @user.save
-    assert_equal 1,@user.type.count
+    assert_equal 14,@user.type.count
   end
 end

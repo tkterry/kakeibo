@@ -20,12 +20,6 @@ class TypeTest < ActiveSupport::TestCase
     assert_not @type.valid?
   end
 
-  test "title should be unique" do
-    duplicate_type=@type.dup
-    @type.save
-    assert_not duplicate_type.valid?
-  end
-
   test "user_id should be present" do
     @type.user=nil
     assert_not @type.valid?
@@ -38,13 +32,17 @@ class TypeTest < ActiveSupport::TestCase
     end
   end
 
-
   test "associated receipts should be move" do
     assert_difference 'Receipt.where(type_id:types(:zero).id).count',Receipt.where(type_id:types(:one).id).count do
       types(:one).destroy
     end
   end
 
-
+  test "associated else receipts should be move other_else" do
+    assert_difference 'Receipt.where(type_id:types(:zero).id).count',Receipt.where(type_id:types(:one).id).count do
+      types(:zero).destroy
+    end
+    assert 
+  end
 
 end

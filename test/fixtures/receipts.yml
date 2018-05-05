@@ -34,3 +34,10 @@ five:
   type: two
   user: michael
   memo: MyText2
+
+six:
+  payment: 500
+  p_date: 2018-03-10
+  type: zero
+  user: michael
+  memo: MyText2

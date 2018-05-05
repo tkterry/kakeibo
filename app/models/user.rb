@@ -3,6 +3,7 @@ class User < ApplicationRecord
     has_many :receipt, dependent: :destroy
     has_many :type, dependent: :destroy
     before_save{self.email = email.downcase}
+    before_destroy :type_refresh
     after_create :ini_type_create
     validates :name, presence:true, length:{maximum:50}
     # VALID_EMAIL_REGEX=/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -36,9 +37,27 @@ class User < ApplicationRecord
     end
 
     def ini_type_create
-        unless self.type.find_by(title:'未分類')
-         @type=Type.new(title:'未分類',user:self)
-         @type.save
+        titles=['食費',
+                '雑貨・日用品費',
+                '被服費',
+                '交通費',
+                '美容費',
+                '遊興費',
+                '光熱水費',
+                '住居費',
+                '通信費',
+                '教育費',
+                '医療費',
+                '保険費',
+                '交際接待費',
+                '未分類']
+        titles.each do |t|
+            @type=Type.new(title:t,user:self)
+            @type.save
         end
+    end
+
+    def type_refresh #user削除に伴うtype_destroy時,type modelのini_type_createでtypeお化け生成を防ぐ。
+        self.type.delete_all
     end
 end

@@ -1,6 +1,6 @@
 class ReceiptsController < ApplicationController
-#  before_action :logged_in_user,only: [:new,:create,:edit,:update,:index,:destroy]
-#  before_action :correct_user,only: [:edit,:update]
+# before_action :logged_in_user,only: [:new,:create,:edit,:update,:index,:destroy]
+# before_action :correct_user,only: [:destroy,:index,:new,:create,:edit,:update]
 
  def index
     @receipts=current_user.receipt.paginate(page:params[:page]) #includes(:type).all.order(created_at: :desc).limit(5)
@@ -9,7 +9,7 @@ class ReceiptsController < ApplicationController
  def new
     require 'date'
     @receipts=current_user.receipt.includes(:type).all.order(created_at: :desc).limit(5)
-    @types=Type.all
+    @types=current_user.type.all
     @amounts=current_user.receipt.includes(:type).where(p_date:Date.today.beginning_of_month..Date.today.end_of_month)
     @prevamount=current_user.receipt.includes(:type).where(p_date:Date.today.prev_month.beginning_of_month..Date.today.prev_month.end_of_month)
     @today=Date.today
@@ -28,7 +28,7 @@ class ReceiptsController < ApplicationController
  def edit
     require 'date'
     @receipt=Receipt.find(params[:id])
-    @types=Type.all
+    @types=current_user.type.all
     @amounts=Receipt.includes(:type).where('p_date>?',Date.today-30)
  end
 
@@ -52,11 +52,12 @@ class ReceiptsController < ApplicationController
     
 private
  def receipt_params
-    params.require(:receipt).permit(:payment,:p_date,:type_id,:memo)
+    params.require(:receipt).permit(:payment,:p_date,:type_id,:memo,:user_id)
  end
 
  def correct_user
-    @user=User.find(params[:id])
+    @user=User.find(params[:user])
     redirect_to(root_url) unless correct_user?(@user)
  end
+
 end

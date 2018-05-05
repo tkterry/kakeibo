@@ -2,7 +2,7 @@
 <div class="container"  style="padding-bottom:164px;">
 <%= form_for :receipt,url:receipts_path do |f|%>
   <div class="row">
-   <div class="col-md-12">
+   <div class="col-md-12">  
     <%=f.number_field :payment,placeholder:'enter payment'%>
     <%=f.text_field :p_date, value:@today, class:'date-picker', placeholder:'enter paid_at'%>
     <%=f.text_field :memo,placeholder:'enter memo'%>
