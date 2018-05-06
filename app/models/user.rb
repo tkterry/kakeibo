@@ -52,7 +52,7 @@ class User < ApplicationRecord
                 '交際接待費',
                 '未分類']
         titles.each do |t|
-            @type=Type.new(title:t,user:self)
+            @type=self.type.new(title:t)
             @type.save
         end
     end
