@@ -1,6 +1,6 @@
 class TypesController < ApplicationController
   def index
-    @types=current_user.type.all
+    @types=current_user.type.rank(:row_order)
   end
 
   def create
@@ -17,7 +17,7 @@ class TypesController < ApplicationController
     @type=Type.find(params[:id])
   end
 
- def update
+  def update
     @type=Type.find(params[:id])
     if @type.update(type_params)
       redirect_to types_path
@@ -25,7 +25,7 @@ class TypesController < ApplicationController
     else
       render 'edit'
     end
- end
+  end
 
  def destroy
     @type=Type.find(params[:id])
@@ -34,8 +34,15 @@ class TypesController < ApplicationController
     redirect_to types_path
  end
 
+ #this action wil be called via ajax
+ def sort
+  type = Type.find(params[:id])
+  type.update(type_params)
+  head :no_content
+ end
+
 private
  def type_params
-    params.require(:type).permit(:title,:note,:budget)
+    params.require(:type).permit(:title,:note,:budget,:row_order_position)
  end
 end

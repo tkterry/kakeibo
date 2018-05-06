@@ -1,4 +1,6 @@
 class Type < ApplicationRecord
+    include RankedModel
+    ranks :row_order ,with_same: :user_id
     has_many :receipts
     belongs_to :user
     validates :title,presence:true,length:{maximum:20}

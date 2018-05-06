@@ -197,3 +197,9 @@ input[type="radio"]:checked+label {
 .table {
     border:none;
   }
+
+.table-sortable {
+    tr.item {
+        cursor: row-resize;
+      }
+}

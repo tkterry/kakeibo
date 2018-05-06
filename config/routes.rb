@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'types/new'
-
  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'static_pages/home'
   get 'signup' => 'users#new'
@@ -10,7 +8,8 @@ Rails.application.routes.draw do
 
   post 'signup' => 'users#create'
   root to: 'static_pages#home'
-  resources :types
   resources :receipts
   resources :users
+  put '/types/:id/sort', to: 'types#sort', as: 'type_sort'
+  resources :types
 end

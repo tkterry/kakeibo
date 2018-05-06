@@ -1,13 +1,13 @@
 <h2>Make Types</h2>
 <div class="container">
-    <table class="table table-hover table-responsive">
+    <table class="table table-sortable">
      <thead>
         <th class="small" scope="col">title</th>
         <th class="small" scope="col">actions</th>
      </thead>
      <tbody>
         <% @types.each do |t| %>
-        <tr>
+        <tr class="item" <%= "data-model_name= #{t.class.name.underscore} data-update_url=#{type_sort_path(t)}"  %>>
             <td><%= t.title %></td>
             <td>
              <%= link_to '',edit_type_path(t.id),class:'glyphicon glyphicon-pencil' %>    
