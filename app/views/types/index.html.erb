@@ -19,11 +19,14 @@
             </td>
         </tr>
         <% end %>
+        </table>
+        <%= form_for :type,url:types_path do |f| %>
+        <table class="table">
         <tr>
-            <%= form_for :type,url:types_path do |f| %>
-            <td><%=f.text_field :title,placeholder:'enter title'%></td>
-            <td><%=f.submit "Add",class:"btn btn-sm btn-success btn-lg btn-block"%></td>
+            <td><%=f.text_field :title,placeholder:'enter type title'%></td>
+            <td><%=f.submit "Add New Type",class:"btn btn-sm btn-success btn-lg btn-block"%></td>
         </tr>
+        </table>
         <% end %>
      </tbody>
     </table>

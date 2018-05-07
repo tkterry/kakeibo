@@ -8,7 +8,6 @@ $(document).on 'turbolinks:load', ->
       item = ui.item
       item_data = item.data()
       params =  { _method: 'put' }
-      # window.alert "params:#{item_data.model_name}"
       params[item_data.model_name] = { row_order_position: item.index() }
       $.ajax
         type: 'POST'

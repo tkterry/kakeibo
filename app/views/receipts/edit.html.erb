@@ -3,9 +3,9 @@
 <%= form_for @receipt,url:receipt_path(@receipt.id) do |f|%>
  <div class="row">
   <div class="col-md-12">
-    <%=f.number_field :payment,placeholder:'enter payment'%>
-    <%=f.text_field :p_date,class:'date-picker',placeholder:'enter paid_at'%>
-    <%=f.text_field :memo,placeholder:'enter memo'%>
+    <%=f.number_field :payment,placeholder:'金額'%>
+    <%=f.text_field :p_date,class:'date-picker',placeholder:'日付'%>
+    <%=f.text_field :memo,placeholder:'メモ'%>
   </div>
   <% @types.each do |r|%>
     <div class="col-xs-12 col-md-6">

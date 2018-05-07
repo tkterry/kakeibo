@@ -36,7 +36,7 @@ class ReceiptsController < ApplicationController
     @receipt=Receipt.find(params[:id])
     if @receipt.update(receipt_params)
       redirect_to new_receipt_path
-      flash[:success]="Receipt update"
+      flash[:success]="1件のデータを更新しました。"
     else
       render 'edit'
     end
@@ -45,7 +45,7 @@ class ReceiptsController < ApplicationController
  def destroy
     @receipt=Receipt.find(params[:id])
     @receipt.destroy
-    flash[:success]="Receipt deteted"
+    flash[:success]="1件のデータを削除しました。"
     redirect_to new_receipt_path
  end
     
